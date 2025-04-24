@@ -47,8 +47,24 @@ make bootimage systemimage vendorimage -j$(nproc)
 ```
 ./rpi4-mkimg.sh
 ```
-## 4. Flash the image in the SD Card
+## 4. finding the file
+- it should be something like this inside the folder
+```
+out/target/product/rpi4/RaspberryVanillaAOSP15-20250424-rpi4_car.img
+```
+- find the SD Card by using
+```
+  lsblk
+```
+
+## 5. Flash the image in the SD Card
 - for this purpose I have used [Balena Etcher](https://etcher.balena.io/)
+- or you can use the command
+```
+sudo dd if=out/target/product/rpi4/RaspberryVanillaAOSP15-20250424-rpi4_car.img of=/dev/sdX bs=4M status=progress conv=fsync
+sudo sync
+sudo eject /dev/sdX
+```
 
 ## Useful Links
 - https://medium.com/make-android/android-automotive-os-14-on-a-raspberry-pi-4-e83b2f8ca353
